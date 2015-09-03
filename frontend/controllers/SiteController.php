@@ -23,18 +23,17 @@ class SiteController extends Controller
      */
     public function behaviors()
     {
-        return [
+       return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'signup'],
                 'rules' => [
                     [
-                        'actions' => ['signup'],
+                        /* Author: -ptr.nov- : Permission Allow No Login |index|error|login */
+                        'actions' => ['index', 'error','login'],
                         'allow' => true,
-                        'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['logout', 'index'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],

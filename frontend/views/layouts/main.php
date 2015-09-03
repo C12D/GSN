@@ -18,25 +18,28 @@ dmstr\web\AdminLteAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
-<html lang="<?= Yii::$app->language ?>">
-<head>
-    <meta charset="<?= Yii::$app->charset ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <?= Html::csrfMetaTags() ?>
-    <title><?= Html::encode($this->title) ?></title>
-    <?php $this->head() ?>
-</head>
+	<html lang="<?= Yii::$app->language ?>">
+		<head>
+			<meta charset="<?= Yii::$app->charset ?>">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<?= Html::csrfMetaTags() ?>
+			<title><?= Html::encode($this->title) ?></title>
+            <!-- tambahan variable untuk template Author: --ptr.nov-- !-->
+            <title><?= Html::encode($this->sideMenu) ?></title>
+            <title><?= Html::encode($this->sideCorp) ?></title>
+			<?php $this->head() ?>
+		</head>
 	<?php
 			//---MENU SIDE--
 			 $menuItems=[
-									['label' => Icon::show('home').'Home', 'url' => ['/site/index1']],
-									['label' => Icon::show('home').'Send', 'url' => ['/site/index2']],
-									['label' => Icon::show('home').'Tracking', 'url' => ['/site/index3']],
-									['label' => Icon::show('home').'Affiliation', 'url' => ['/site/index4']],
+									['label' => Icon::show('home').'Home', 'url' => ['/site']],
+									['label' => Icon::show('home').'Send', 'url' => ['/order']],
+									['label' => Icon::show('home').'Tracking', 'url' => ['/tracking']],
+									['label' => Icon::show('home').'Affiliation', 'url' => ['/affiliation']],
 									['label' => Icon::show('home').'Help', 'items' => [
-											['label' => 'FAQ', 'url' => '#'],
-											['label' => 'Helpdesk', 'url' => '#'],
-											['label' => 'Contact', 'url' => '#'],
+											['label' => 'FAQ', 'url' => 'faq'],
+											['label' => 'Helpdesk', 'url' => 'helpdesk'],
+											['label' => 'Contact', 'url' => 'contact'],
 										]
 									]
 							];
@@ -116,8 +119,13 @@ dmstr\web\AdminLteAsset::register($this);
 		</aside>
 		
 	   <div class="content-wrapper">
-	   
-			akaak
+			<div class="panel panel-default" style="margin-left: 2px; margin-right: 2px ;margin-bottom: 0">
+					<?php
+						echo $this->sideCorp;
+						echo $this->sideMenu;
+						echo $content;
+					?>
+			</div>
 	   </div>
 	   
     <?php $this->endBody() ?>
