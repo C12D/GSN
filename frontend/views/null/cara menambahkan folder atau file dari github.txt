@@ -1,0 +1,18 @@
+cara edit file dari localhost ke github
+
+-git status berfungsi untuk mengetahui file2 yang baru saja di edit
+-git add . berfungsi untuk memberikan perserujuan bahwa file akan ditampung kedalam variabl sementara
+-git commit -m "soni firdaus" berfungsi untuk mengisi variabl sebelum di tembak ke github
+-git push berfungsi untuk menarik file yang udah di update ke local ke github kita
+
+
+
+cloning branch
+
+	git clone -b soni(nama branch) https://github.com/sonifir/GSN.git
+
+git pull
+
+git add .
+git commit -m "description"
+git push
