@@ -32,16 +32,18 @@ dmstr\web\AdminLteAsset::register($this);
 	<?php
 			//---MENU SIDE--
 			 $menuItems=[
-									['label' => Icon::show('home').'Home', 'url' => ['/site']],
+									['label' => Icon::show('home').'Home', 'url' => ['/send']],
 									['label' => Icon::show('home').'Send', 'url' => ['/order']],
 									['label' => Icon::show('home').'Tracking', 'url' => ['/tracking']],
 									['label' => Icon::show('home').'Affiliation', 'url' => ['/affiliation']],
+									
 									['label' => Icon::show('home').'Help', 'items' => [
 											['label' => 'FAQ', 'url' => 'faq'],
 											['label' => 'Helpdesk', 'url' => 'helpdesk'],
 											['label' => 'Contact', 'url' => 'contact'],
 										]
-									]
+									],
+									['label' => Icon::show('home').'Login', 'url' => ['/site/login']],
 							];
 				
 	?>
