@@ -2,7 +2,7 @@
 namespace frontend\controllers;
 
 use Yii;
-use backend\models\Provinsi;
+use frontend\models\Provinsi;
 use common\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
@@ -15,7 +15,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
-use backend\models\Kota;
+use frontend\models\Kota;
 use yii\helpers\Json;
 /**
  * Site controller
