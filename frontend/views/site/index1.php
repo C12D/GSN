@@ -9,7 +9,6 @@ use yii\helpers\ArrayHelper;
 use kartik\widgets\ActiveForm;
 use kartik\widgets\DepDrop;
 use yii\widgets\pjax;
-use common\components\GenerateComponent;
 use miloschuman\highcharts\Highcharts;
 $this->title = 'My Yii Application';
 ?>
@@ -19,7 +18,7 @@ $this->title = 'My Yii Application';
   <div class="row">
     <div class="col-sm-8" style="background-color:lavenderblush;"><img src="<?php echo Yii::$app->urlManager->baseUrl.'/images/mobil.jpg'; ?>" class="img-thumbnail" alt="" width="100%"/>
       <?php
-        /*
+
         echo Highcharts::widget([
         'options' => [
         'title' => ['text' => 'Fruit Consumption'],
@@ -35,7 +34,6 @@ $this->title = 'My Yii Application';
         ]
         ]
         ]);
-        */
       ?>
 
     <br/><br/>
@@ -43,7 +41,7 @@ $this->title = 'My Yii Application';
       <div class="col-md-7">
 
         <?php
-       /*   use scotthuangzl\googlechart\GoogleChart;
+          use scotthuangzl\googlechart\GoogleChart;
           echo GoogleChart::widget( array('visualization' => 'Map',
           'packages'=>'map',//default is corechart
           'loadVersion'=>1,//default is 1.  As for Calendar, you need change to 1.1
@@ -63,14 +61,13 @@ $this->title = 'My Yii Application';
           'options' => array('title' => 'My Daily Activity',
           'showTip'=>true,
           )));
-          */
         ?>
 
       </div>
 
       <div class="col-md-5"> 
 
-      <!--<table class="table"style="margin-bottom:0px;">
+      <table class="table"style="margin-bottom:0px;">
         <tbody>
           <tr>
             <td><b>Values Checking</b></td>
@@ -105,7 +102,7 @@ $this->title = 'My Yii Application';
 
 
         </tbody>
-      </table>-->
+      </table>
  
       </div>
     </div>
@@ -118,16 +115,9 @@ $this->title = 'My Yii Application';
 
 
     <div class="col-sm-4" style="background-color:lavender;">
-    <table>
-        <tbody>
-          <tr>
-            <td> <br/><img src="<?php echo Yii::$app->urlManager->baseUrl.'/images/user.jpg'; ?>" class="img-circle" alt="User Image" width="100"/></td><td></td>
-            <td>&nbsp&nbsp<b>Soni Firdaus</b></td>
-          </tr>
-          <tr><td align="center"><font color="blue"><b>Edit Profil</b></td></tr>
-
-        </tbody>
-      </table>
+    <br/>
+      <img src="<?php echo Yii::$app->urlManager->baseUrl.'/images/user.jpg'; ?>" class="img-circle" alt="User Image" width="100"/>&nbsp; <h4><b>Soni Firdaus</b></h4><br/>
+      sonifirdaus34@gmail.com
    <div class="harga-form">
 
     <?php $form = ActiveForm::begin([
@@ -137,7 +127,7 @@ $this->title = 'My Yii Application';
   
 
     <?php
-  /*  $dataPost=ArrayHelper::map(kota::find()->all(), 'CITY_ID', 'CITY_NAME');
+    $dataPost=ArrayHelper::map(kota::find()->all(), 'CITY_ID', 'CITY_NAME');
     echo $form->field($model, 'ORIGIN_CITY')
         ->dropDownList(
             $dataPost
@@ -150,52 +140,9 @@ $this->title = 'My Yii Application';
             $dataPost
         );
         ?>
-        */?>
-    <?php echo "<h2><b>Origin</b></h2>";?>
-
-    <?php
-  
-     echo $form->field($model,'ORIGIN_PROVINCE')->dropDownList(ArrayHelper::map(Provinsi::find()->asArray()->all(), 'PROVINCE_ID', 'PROVINCE' ),['id'=>'cat-id'],['prompt'=>'-Choose a provinsi-']);
-        
- 
-   
-       echo $form->field($model, 'ORIGIN_CITY')->widget(\kartik\depdrop\DepDrop::classname(), [
-      'options'=>['id'=>'subcat-id'],
-      'pluginOptions'=>[
-        'depends'=>['cat-id'],
-        'placeholder'=>'Select...',
-        'url'=>Url::to(['/site/get-kota'])
-    ]
-]);
-    ?>
-     <?php echo "<h2><b>Destination</b></h2>";?>
-
-    <?php
-      $Expired=Provinsi::find()->all();
-        
-      $listData=ArrayHelper::map($Expired,'PROVINCE_ID', 'PROVINCE');
     
-
-     echo $form->field($model, 'DES_PROVINCE')->dropDownList($listData, 
-             ['prompt'=>'-Pilih Provinsi-',
-              'onchange'=>'
-                $.post( "index.php?r=site/lists&id='.'"+$(this).val(), function( data ) {
-                  $( "select#harga-des_city" ).html( data );
-                });
-            '
-           
-             ])->label('Des Province'); 
-     ?>
-    <?php
-    $dataPost=ArrayHelper::map(Kota::find()->all(), 'CITY_ID', 'CITY_NAME');
-    echo $form->field($model, 'DES_CITY')
-        ->dropDownList(
-            $dataPost
-        );
-        ?>
     <?= $form->field($model, 'HARGA')->textInput() ?>
-    <?php echo $form->field($model, 'KATEGORI')->dropDownList(['DOKUMENT' => 'DOKUMENT', 'FILE' => 'FILE', 'BARANG' => 'BARANG'],['prompt'=>'-Pilih Kategori-'],['label'=>'soni']); ?>
-  
+
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
@@ -210,4 +157,3 @@ $this->title = 'My Yii Application';
     
 
 </div>
-<?php  echo Yii::$app->GenCom->Generate2();?>
